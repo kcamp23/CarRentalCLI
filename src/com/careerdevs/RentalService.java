@@ -6,36 +6,43 @@ public class RentalService {
     public static void main(String[] args) {
         System.out.print("Welcome to the Car Rental CLI");
 
-       rentalCheckIn();
-        rentMethod();
-   }
-//
-               public static void rentalCheckIn() {
 
-            Scanner scanner = new Scanner(System.in);
+        checkIn();
+        availableCars();
+        userSelectionRent();
 
-            System.out.print("\n Would you like to rent or return today? \n Rent or Return: ");
-            String rentOrReturn = scanner.next();
-        }
 
-//            if (rentOrReturn != "rent") {
-//                //System.out.print("which option would you like today? \n " );
-//
-//
-//
-//
-//
-//
-//
-//
-//            } else if (rentOrReturn == "rent") {
-//                rentMethod();
-//            }
-            //System.out.print("Thank you for choosing us we hope you enjoyed your experience and we hope to see you again soon");
+    }
+
+    //
+    public static Void checkIn() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("\n Would you like to rent or return today? \n Rent or Return: ");
+        String rentOrReturn = scanner.next();
+
+
+            if (rentOrReturn != "rent") {
+                System.out.print("which option would you like today? \n " );
+
+
+
+
+
+
+
+
+            } else if (rentOrReturn == "rent") {
+              //  rentMethod();
+            }
+        System.out.print("Thank you for choosing us we hope you enjoyed your experience and we hope to see you again soon");
 
 
         //goes into the garage
-    public static void  rentMethod() {
+        return null;
+    }
+    public static void availableCars() {
         // System.out.print("Which Option would you like today" + "\n");
 
         Car[] garage = new Car[4];
@@ -49,17 +56,27 @@ public class RentalService {
         garage[2] = car3;
         garage[3] = car4;
 
+
         for (int i = 0; i < garage.length; i++) {
-            if(garage[i].isRented() == true ) {
+            if (garage[i].isRented() == true) {
 
                 System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
+            } else {
+                System.out.print((i + 1) + " ) " + "Unavailable \n");
             }
-            else {
-                System.out.print((i+1) + " ) " +"Unavailable \n");
-            }
-                // System.out.println(garage[0]);
+
         }
     }
+        public static void userSelectionRent() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number to select the car you 'd like to rent \n Selection:");
+        int userChoiceRent = scanner.nextInt();
+//choose car, move car to rented , print confirmation information
+
+        }
+    }
+
 
 
 
@@ -72,4 +89,4 @@ public class RentalService {
 //
 //    }
 //
-}
+
