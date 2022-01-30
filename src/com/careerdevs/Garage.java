@@ -32,31 +32,7 @@ package com.careerdevs;
 //                //goes into the garage
 //                return null;
 //                }
-//public static void availableCars() {
-//        // System.out.print("Which Option would you like today" + "\n");
 //
-//        Car[] garage = new Car[4];
-//        Car car1 = new Car("Ford", "Mustang", false);
-//        Car car2 = new Car("Pontiac", "Torrent", false);
-//        Car car3 = new Car("Dodge", "Ram", true);
-//        Car car4 = new Car("Nissan", "Stanza", true);
-//
-//        garage[0] = car1;
-//        garage[1] = car2;
-//        garage[2] = car3;
-//        garage[3] = car4;
-//
-//
-//        for (int i = 0; i < garage.length; i++) {
-//        if (garage[i].isRented() == true) {
-//
-//        System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
-//        } else {
-//        System.out.print((i + 1) + " ) " + "Unavailable \n");
-//        }
-//
-//        }
-//        }
 //public static void userSelectionRent() {
 //        Scanner scanner = new Scanner(System.in);
 //
