@@ -57,7 +57,7 @@ public class RentalService {
         System.out.print("Which car would you like to rent today?\n");
 
         for (int i = 0; i < garage.length; i++) {
-            if (garage[i].isRented() == true) {
+            if (garage[i].isRented()) {
 
                 System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
             } else {
@@ -65,7 +65,11 @@ public class RentalService {
             }
 
         }
-       changeAvailability(garage);
+        System.out.println("Which car  would you like to choose?");
+        Scanner scanner = new Scanner(System.in);
+        int rentalOption = scanner.nextInt();
+        System.out.print(" You have choosen the  " + garage[(rentalOption - 1)].getName() + "\n");
+       changeAvailability(garage, rentalOption);
         whatsNext(garage);
 
 //        System.out.print("The following cars are now available: \n");
@@ -88,23 +92,10 @@ public class RentalService {
         int rentalNext = scanner.nextInt();
 
         switch (rentalNext) {
-            case 1:
-                rentACar(garage);
-                break;
-
-            case 2:
-                returnACar(garage);
-                break;
-
-            case 3:
-                mainMenu(garage);
-                break;
-
-            default:
-                mainMenu(garage);
-                break;
-
-
+            case 1 -> rentACar(garage);
+            case 2 -> returnACar(garage);
+            case 3 -> mainMenu(garage);
+            default -> mainMenu(garage);
         }
     }
 
@@ -114,27 +105,28 @@ public class RentalService {
         System.out.print("Available cars to rent today?\n");
 
         for (int i = 0; i < garage.length; i++) {
-                if (garage[i].isRented() == false) {
+                if (!garage[i].isRented()) {
 
                     System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
                 } else {
                     // System.out.print((i + 1) + " ) " + "Unavailable \n");
                     }
                     }
-        changeAvailability(garage);
+        System.out.println("Which car  would you like to choose?");
+        Scanner scanner = new Scanner(System.in);
+        int rentalOption = scanner.nextInt();
+        System.out.print(" You have choosen the  " + garage[(rentalOption - 1)].getName() + "\n");
+        changeAvailability(garage, rentalOption);
         whatsNext(garage);
     }
 
 
-        public static void changeAvailability(Car[] garage ){
-            System.out.println("Which car  would you like to choose?");
-            Scanner scanner = new Scanner(System.in);
-            int rentalOption = scanner.nextInt();
-            System.out.print(" You have choosen the  " + garage[(rentalOption - 1)].getName() + "\n");
+        public static void changeAvailability(Car[] garage, int rentalOption){
+
 
             if (!garage[(rentalOption - 1)].isRented()) {
                 garage[(rentalOption - 1)].setRented(true);
-            } else if (garage[(rentalOption - 1)].isRented() == true) {
+            } else if (garage[(rentalOption - 1)].isRented()) {
                 garage[(rentalOption - 1)].setRented(false);
             }
             //garage[(rentalOption - 1)].isRented() = !garage[(rentalOption-1)].setRented();
