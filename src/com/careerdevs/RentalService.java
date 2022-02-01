@@ -36,6 +36,7 @@ public class RentalService {
             rentACar(garage);
         } else if (mainMenuOption == 2) {
             //// run return menu
+            returnACar(garage);
         }else if (mainMenuOption == 3){
             endProgram();
         }else{
@@ -123,12 +124,13 @@ public class RentalService {
 
                 System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
             } else  {
-                // System.out.print((i + 1) + " ) " + "Unavailable \n");
+               // System.out.print((i + 1) + " ) " + "Unavailable \n");
+
             }
 
         }
         System.out.println("Which car  would you like to return ?");
-        Scanner scanner = new Scanner(System.in);
+        private static Scanner scanner = new Scanner(System.in);
         int rentalOption = scanner.nextInt();
         System.out.print(" You have choosen the  " + garage[(rentalOption - 1)].getName() + "\n");
 
