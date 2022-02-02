@@ -3,6 +3,8 @@ package com.careerdevs;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.careerdevs.CLI.scanner;
+
 public class RentalService {
     public static void main(String[] args) {
 
@@ -88,7 +90,7 @@ public class RentalService {
         }
          String cLI = CLI.readString( "Which car would you like to rent?");
 //        System.out.println("Which car  would you like to choose?");
-//        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 //        int rentalOption = scanner.nextInt();
         //capture users name
         int rentalOption = CLI.readInt("Which car would you like to choose?\n");
