@@ -3,7 +3,7 @@ package com.careerdevs;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.careerdevs.CLI.scanner;
+
 
 public class RentalService {
     public static void main(String[] args) {
