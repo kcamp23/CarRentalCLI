@@ -23,7 +23,7 @@ public class RentalService {
 
     public static void mainMenu(Car[] garage) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("MAIN MENU");
+        System.out.print("MAIN MENU\n");
 
         System.out.print("What  would you like to do today?\n\r");
 
@@ -70,12 +70,12 @@ public class RentalService {
     }
 
     public static void endProgram() {
-        System.out.print("Thank you for Choosing Off the Walls and have a great day!!");
+       System.out.print("Thank you for Choosing Off the Walls and have a great day!!");
 
     }
 
     public static void rentACar(Car[] garage) {
-        System.out.print("Which car would you like to rent today?\n");
+        //System.out.print("Which car would you like to rent today?\n");
 
         for (int i = 0; i < garage.length; i++) {
             if (garage[i].isRented()) {
@@ -86,10 +86,14 @@ public class RentalService {
             }
 
         }
-        System.out.println("Which car  would you like to choose?");
-        Scanner scanner = new Scanner(System.in);
-        int rentalOption = scanner.nextInt();
+         String cLI = CLI.readString( "Which car would you like to rent?");
+//        System.out.println("Which car  would you like to choose?");
+//        Scanner scanner = new Scanner(System.in);
+//        int rentalOption = scanner.nextInt();
         //capture users name
+        int rentalOption = CLI.readInt("Which car would you like to choose?\n");
+
+
         System.out.print("What name would you like to rent this under?");
         String rentersName = scanner.next();
         System.out.print(rentersName + " have rented the  " + garage[(rentalOption - 1)].getName() + "\n");
