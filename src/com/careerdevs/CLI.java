@@ -20,14 +20,18 @@ public class CLI {
         }
     }
 
-public static int readInt (String question){
-        while(true) {
-             System.out.print(question);
+public static int readInt (String question, int min, int max){
+        try {
+            System.out.print(question);
+            System.out.print("Number( " + min + "- " + max);
+            int temp = scanner.nextInt();
+            scanner.nextLine();
 
-             try{
-                 int temp = scanner.nextInt();
-                 scanner.nextLine();
-                 return temp;
+            if (temp >= min && temp <= max){
+                return temp;
+            }
+            System.out.println("Number outside of the valid range, Please try again");
+                return readInt(question, min,max);
 
              }catch(InputMismatchException e){
                  System.out.print("Must enter a valid integer, please try again");
@@ -44,5 +48,3 @@ public static int readInt (String question){
 
 }
 
-
-}

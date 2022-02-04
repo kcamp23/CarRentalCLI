@@ -7,6 +7,10 @@ import java.util.Scanner;
 // add in being able to make a new car from user
 // add time to rent
 // possibly add rates and total
+// allow to always return to main
+// confirm everything
+
+
 
 public class RentalService {
     public static void main(String[] args) {
