@@ -1,6 +1,5 @@
 package com.careerdevs;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -24,10 +23,7 @@ public class RentalService {
     }
 
     public static void mainMenu(Car[] garage) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("MAIN MENU\n");
-
-        System.out.print("What  would you like to do today?\n\r");
 
         int returnAvailable = 0;
         int rentalAvailable = 0;
@@ -38,9 +34,6 @@ public class RentalService {
                 returnAvailable = returnAvailable + 1;
             }
         }
-            //incrment with true statements
-            //if gretaer than 0 then print option
-            // print number of options
 
             if  (rentalAvailable > 0) {
                 System.out.print("1) Rent(" + rentalAvailable + " cars available) \n\r");
@@ -48,12 +41,10 @@ public class RentalService {
             if (returnAvailable > 0) {
                 System.out.print("2) Return (" + returnAvailable + " cars available) \n\r");
             }
-            System.out.print("3) Exit program\n\r  Which option: ");
+            System.out.print("3) Exit program\n\r   ");
 
 
-            int mainMenuOption = scanner.nextInt();
-            //entr CLI class once its been laid out
-
+        int mainMenuOption = CLI.readInt("What would you like to do today?\n");
             if (mainMenuOption == 1) {
                 //run rental menu
                 rentACar(garage);
@@ -77,27 +68,18 @@ public class RentalService {
     }
 
     public static void rentACar(Car[] garage) {
-        //System.out.print("Which car would you like to rent today?\n");
 
         for (int i = 0; i < garage.length; i++) {
             if (garage[i].isRented()) {
 
                 System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
             } else {
-                // System.out.print((i + 1) + " ) " + "Unavailable \n");
-            }
+                }
 
         }
-         String cLI = CLI.readString( "Which car would you like to rent?");
-//        System.out.println("Which car  would you like to choose?");
-        Scanner scanner = new Scanner(System.in);
-//        int rentalOption = scanner.nextInt();
-        //capture users name
-        int rentalOption = CLI.readInt("Which car would you like to choose?\n");
+         int rentalOption  = CLI.readInt( "Which car would you like to rent?");
 
-
-        System.out.print("What name would you like to rent this under?");
-        String rentersName = scanner.next();
+        String rentersName = CLI.readString("What name would you like to rent this under?");
         System.out.print(rentersName + " have rented the  " + garage[(rentalOption - 1)].getName() + "\n");
         //confirm they want selection
 
@@ -125,8 +107,6 @@ public class RentalService {
 
     public static void returnACar(Car[] garage) {
 
-        System.out.print("Available cars to rent today?\n");
-
         for (int i = 0; i < garage.length; i++) {
             if (!garage[i].isRented()) {
 
@@ -135,13 +115,10 @@ public class RentalService {
                 // System.out.print((i + 1) + " ) " + "Unavailable \n");
             }
         }
-
-        System.out.println("Which car  would you like to choose?");
-        Scanner scanner = new Scanner(System.in);
-        int rentalOption = scanner.nextInt();
+            int rentalOption = CLI.readInt("Which car would you like to return?\n");
         //capture users name
-        System.out.print("Whose name is this being returned in? ");
-        String returnersName = scanner.next();
+        String returnersName = CLI.readString("Whose name is this being returned in today?\n");
+
         System.out.print(returnersName +"  have returned the  " + garage[(rentalOption - 1)].getName() + "\n");
         //confirm they want selection
         changeAvailability(garage, rentalOption);
