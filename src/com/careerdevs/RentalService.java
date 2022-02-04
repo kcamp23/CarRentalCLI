@@ -87,8 +87,7 @@ public class RentalService {
         whatsNext(garage);
     }
 
-
-    public static void whatsNext(Car[] garage) {
+        public static void whatsNext(Car[] garage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to do next?");
         System.out.println("1) Rent another car?");
