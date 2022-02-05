@@ -1,6 +1,7 @@
 package com.careerdevs;
 
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CLI {
@@ -20,10 +21,10 @@ public class CLI {
         }
     }
 
-public static int readInt (String question, int min, int max){
+        public static int readInt (String question, int min, int max){
         try {
             System.out.print(question);
-            System.out.print("Number( " + min + "- " + max);
+            System.out.print("Number( " + min + "- " + max + ")");
             int temp = scanner.nextInt();
             scanner.nextLine();
 
@@ -36,13 +37,29 @@ public static int readInt (String question, int min, int max){
              }catch(InputMismatchException e){
                  System.out.print("Must enter a valid integer, please try again");
                 scanner.nextLine();
-                return readInt(question);
+                return readInt(question,min,max);
              }catch (ArrayIndexOutOfBoundsException e){
                  System.out.print("Must enter a valid selection, please try again");
                  scanner.nextLine();
-                 return readInt(question);
+                 return readInt(question,min,max);
              }
 
+
+        }
+
+        public static boolean  yesOrNo (String question){
+        while(true){
+            System.out.print("\n" + question + "\n yes or no:");
+            String readInputString = scanner.nextLine();
+            char finalInput = readInputString.toLowerCase(Locale.ROOT).trim().charAt(0);
+
+            if( finalInput == 'y'){
+                return true;
+            }else if ( finalInput == 'n'){
+                return false;
+                            }
+            System.out.print("Input must be Y or N");
+        }
 
         }
 

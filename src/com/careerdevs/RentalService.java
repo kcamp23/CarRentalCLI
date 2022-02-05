@@ -2,7 +2,6 @@ package com.careerdevs;
 
 import java.util.Scanner;
 
-// add in min and max limits for inputs to avoid errors or incorrect inputs
 // change numbering system to be in order regardless of what the options are
 // add in being able to make a new car from user
 // add time to rent
@@ -52,7 +51,7 @@ public class RentalService {
             System.out.print("3) Exit program\n\r   ");
 
 
-        int mainMenuOption = CLI.readInt("What would you like to do today?\n");
+        int mainMenuOption = CLI.readInt("What would you like to do today?\n",1,4);
             if (mainMenuOption == 1) {
                 //run rental menu
                 rentACar(garage);
@@ -85,11 +84,21 @@ public class RentalService {
                 }
 
         }
-         int rentalOption  = CLI.readInt( "Which car would you like to rent?");
+         int rentalOption  = CLI.readInt( "Which car would you like to rent?",1,4);
 
         String rentersName = CLI.readString("What name would you like to rent this under?");
-        System.out.print(rentersName + " have rented the  " + garage[(rentalOption - 1)].getName() + "\n");
+        System.out.print(rentersName + " has rented the  " + garage[(rentalOption - 1)].getName());
         //confirm they want selection
+        boolean confirm = CLI.yesOrNo("Are you sure this is what you would like to rent today? \n");
+        if ( confirm == true){
+            System.out.print(" Thank you " + rentersName + " you have confirmed your rental of the " + garage[(rentalOption-1)].getName() + " we hope you enjoy your car.");
+
+        }else {
+            System.out.print("We are sorry about that, please choose what you would like to do today. ");
+            mainMenu(garage);
+        }
+
+
 
         changeAvailability(garage, rentalOption);
         whatsNext(garage);
@@ -122,7 +131,7 @@ public class RentalService {
                 // System.out.print((i + 1) + " ) " + "Unavailable \n");
             }
         }
-            int rentalOption = CLI.readInt("Which car would you like to return?\n");
+            int rentalOption = CLI.readInt("Which car would you like to return?\n",1,5);
         //capture users name
         String returnersName = CLI.readString("Whose name is this being returned in today?\n");
 
