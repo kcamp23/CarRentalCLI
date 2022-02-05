@@ -135,8 +135,17 @@ public class RentalService {
         //capture users name
         String returnersName = CLI.readString("Whose name is this being returned in today?\n");
 
-        System.out.print(returnersName +"  have returned the  " + garage[(rentalOption - 1)].getName() + "\n");
-        //confirm they want selection
+        System.out.print(returnersName +"  has returned the  " + garage[(rentalOption - 1)].getName() + "\n");
+
+        boolean confirmReturn = CLI.yesOrNo("Are you sure this is what you would like to return today? \n");
+        if ( confirmReturn == true){
+            System.out.print(" Thank you " + returnersName + " you have confirmed your rental of the " + garage[(rentalOption-1)].getName() + " we hope you enjoy your car.");
+
+        }else {
+            System.out.print("We are sorry about that, please choose what you would like to do today. ");
+            mainMenu(garage);
+        }
+
         changeAvailability(garage, rentalOption);
         whatsNext(garage);
     }
