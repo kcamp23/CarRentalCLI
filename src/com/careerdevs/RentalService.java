@@ -6,23 +6,36 @@ import java.util.Scanner;
 // add in being able to make a new car from user
 // add time to rent
 // possibly add rates and total
-// allow to always return to main
-// confirm everything
+
+
 
 
 
 public class RentalService {
+    public static String createMake;
+
+    public static String getCreateMake() {
+        return createMake;
+    }
+
+    public static String createModel;
+    public static String getCreateModel(){
+        return createModel;
+    }
+
     public static void main(String[] args) {
 
-        Car[] garage = new Car[4];
+        Car[] garage = new Car[5];
         Car car1 = new Car("Ford", "Mustang", true);
         Car car2 = new Car("Pontiac", "Torrent", false);
         Car car3 = new Car("Dodge", "Ram", true);
         Car car4 = new Car("Nissan", "Stanza", false);
+        Car car5 = new Car(getCreateMake(),getCreateModel(),false);
         garage[0] = car1;
         garage[1] = car2;
         garage[2] = car3;
         garage[3] = car4;
+        garage[4] = car5;
 
         System.out.println("Welcome to Off the Walls  Rental CLI\n\r");
         mainMenu(garage);
@@ -49,6 +62,7 @@ public class RentalService {
                 System.out.print("2) Return (" + returnAvailable + " cars available) \n\r");
             }
             System.out.print("3) Exit program\n\r   ");
+            System.out.print("4) Create a new car\n");
 
 
         int mainMenuOption = CLI.readInt("What would you like to do today?\n",1,4);
@@ -60,6 +74,8 @@ public class RentalService {
                 returnACar(garage);
             } else if (mainMenuOption == 3) {
                 endProgram();
+            }else if (mainMenuOption == 4){
+                createANewCar(garage);
             } else {
                 System.out.print("Car selection invalid, please try again\n");
                 mainMenu(garage);
@@ -163,6 +179,17 @@ public class RentalService {
                 //garage[(rentalOption - 1)].isRented() = !garage[(rentalOption-1)].setRented();
 
             }
+
+            public static void createANewCar( Car[] garage){
+
+        String createMake =  CLI.readString("what will be the make of the newly added car?");
+        String createModel = CLI.readString("What will be the model of the newly added car?\n");
+        System.out.print("Thank you, your car has been created");
+
+        mainMenu(garage);
+
+            }
+
         }
 
 
