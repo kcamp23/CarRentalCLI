@@ -1,5 +1,6 @@
 package com.careerdevs;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // change numbering system to be in order regardless of what the options are
@@ -12,45 +13,35 @@ import java.util.Scanner;
 
 
 public class RentalService {
-    public static String createMake;
 
-    public static String getCreateMake() {
-        return createMake;
-    }
+        public static void main(String[] args) {
 
-    public static String createModel;
-    public static String getCreateModel(){
-        return createModel;
-    }
+            Car car1 = new Car("Ford", "Mustang", true);
+            Car car2 = new Car("Pontiac", "Torrent", false);
+            Car car3 = new Car("Dodge", "Ram", true);
+            Car car4 = new Car("Nissan", "Stanza", false);
 
-    public static void main(String[] args) {
+            ArrayList<Car> garage = new ArrayList<>();
+            garage.add(car1);
+            garage.add(car2);
+            garage.add(car3);
+            garage.add(car4);
 
-        Car[] garage = new Car[5];
-        Car car1 = new Car("Ford", "Mustang", true);
-        Car car2 = new Car("Pontiac", "Torrent", false);
-        Car car3 = new Car("Dodge", "Ram", true);
-        Car car4 = new Car("Nissan", "Stanza", false);
-        Car car5 = new Car(getCreateMake(),getCreateModel(),false);
-        garage[0] = car1;
-        garage[1] = car2;
-        garage[2] = car3;
-        garage[3] = car4;
-        garage[4] = car5;
+            System.out.println("Welcome to Off the Walls  Rental CLI\n\r");
 
-        System.out.println("Welcome to Off the Walls  Rental CLI\n\r");
         mainMenu(garage);
 
     }
 
-    public static void mainMenu(Car[] garage) {
+    public static void mainMenu (ArrayList<Car> garage ) {
         System.out.print("MAIN MENU\n");
 
         int returnAvailable = 0;
         int rentalAvailable = 0;
-        for (int i = 0; i < garage.length; i++) {
-            if (garage[i].isRented() == true) {
+        for (int i = 0; i < garage.size(); i++) {
+            if (garage.get(i).isRented() == true) {
                 rentalAvailable = rentalAvailable + 1;
-            } else if (garage[i].isRented() == false) {
+            } else if (garage.get(i).isRented() == false) {
                 returnAvailable = returnAvailable + 1;
             }
         }
@@ -90,12 +81,12 @@ public class RentalService {
 
     }
 
-    public static void rentACar(Car[] garage) {
+    public static void rentACar(ArrayList<Car> garage) {
 
-        for (int i = 0; i < garage.length; i++) {
-            if (garage[i].isRented()) {
+        for (int i = 0; i < garage.size(); i++) {
+            if (garage.get(i).isRented()) {
 
-                System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
+                System.out.print((i + 1) + ")  " + garage.get(i).getName() + "\n");
             } else {
                 }
 
@@ -103,11 +94,11 @@ public class RentalService {
          int rentalOption  = CLI.readInt( "Which car would you like to rent?",1,4);
 
         String rentersName = CLI.readString("What name would you like to rent this under?");
-        System.out.print(rentersName + " has rented the  " + garage[(rentalOption - 1)].getName());
+        System.out.print(rentersName + " has rented the  " + garage.get((rentalOption - 1)).getName());
         //confirm they want selection
         boolean confirm = CLI.yesOrNo("Are you sure this is what you would like to rent today? \n");
         if ( confirm == true){
-            System.out.print(" Thank you " + rentersName + " you have confirmed your rental of the " + garage[(rentalOption-1)].getName() + " we hope you enjoy your car.");
+            System.out.print(" Thank you " + rentersName + " you have confirmed your rental of the " + garage.get((rentalOption-1)).getName() + " we hope you enjoy your car.");
 
         }else {
             System.out.print("We are sorry about that, please choose what you would like to do today. ");
@@ -116,11 +107,11 @@ public class RentalService {
 
 
 
-        changeAvailability(garage, rentalOption);
+        changeAvailability(garage,rentalOption);
         whatsNext(garage);
     }
 
-        public static void whatsNext(Car[] garage) {
+        public static void whatsNext(ArrayList<Car> garage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to do next?");
         System.out.println("1) Rent another car?");
@@ -137,12 +128,12 @@ public class RentalService {
     }
 
 
-    public static void returnACar(Car[] garage) {
+    public static void returnACar(ArrayList<Car> garage) {
 
-        for (int i = 0; i < garage.length; i++) {
-            if (!garage[i].isRented()) {
+        for (int i = 0; i < garage.size(); i++) {
+            if (!garage.get(i).isRented()) {
 
-                System.out.print((i + 1) + ")  " + garage[i].getName() + "\n");
+                System.out.print((i + 1) + ")  " + garage.get(i).getName() + "\n");
             } else {
                 // System.out.print((i + 1) + " ) " + "Unavailable \n");
             }
@@ -151,11 +142,11 @@ public class RentalService {
         //capture users name
         String returnersName = CLI.readString("Whose name is this being returned in today?\n");
 
-        System.out.print(returnersName +"  has returned the  " + garage[(rentalOption - 1)].getName() + "\n");
+        System.out.print(returnersName +"  has returned the  " + garage.get((rentalOption - 1)).getName() + "\n");
 
         boolean confirmReturn = CLI.yesOrNo("Are you sure this is what you would like to return today? \n");
         if ( confirmReturn == true){
-            System.out.print(" Thank you " + returnersName + " you have confirmed your rental of the " + garage[(rentalOption-1)].getName() + " we hope you enjoy your car.");
+            System.out.print(" Thank you " + returnersName + " you have confirmed your rental of the " + garage.get((rentalOption-1)).getName() + " we hope you enjoy your car.");
 
         }else {
             System.out.print("We are sorry about that, please choose what you would like to do today. ");
@@ -168,23 +159,26 @@ public class RentalService {
 
 
 
-            public static void changeAvailability (Car[]garage,int rentalOption){
+            public static void changeAvailability (ArrayList<Car> garage,int rentalOption){
 
 
-                if (!garage[(rentalOption - 1)].isRented()) {
-                    garage[(rentalOption - 1)].setRented(true);
-                } else if (garage[(rentalOption - 1)].isRented()) {
-                    garage[(rentalOption - 1)].setRented(false);
+                if (!garage.get((rentalOption - 1)).isRented()) {
+                    garage.get((rentalOption - 1)).setRented(true);
+                } else if (garage.get((rentalOption - 1)).isRented()) {
+                    garage.get((rentalOption - 1)).setRented(false);
                 }
                 //garage[(rentalOption - 1)].isRented() = !garage[(rentalOption-1)].setRented();
 
             }
 
-            public static void createANewCar( Car[] garage){
+            public static void createANewCar( ArrayList<Car> garage){
 
         String createMake =  CLI.readString("what will be the make of the newly added car?");
         String createModel = CLI.readString("What will be the model of the newly added car?\n");
-        System.out.print("Thank you, your car has been created");
+        System.out.print("Thank you, your car has been created\n");
+
+        Car car5 = new Car(createMake,createModel,false);
+        garage.add(car5);
 
         mainMenu(garage);
 
