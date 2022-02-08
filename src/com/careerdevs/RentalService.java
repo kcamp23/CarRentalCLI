@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // change numbering system to be in order regardless of what the options are
-// add in being able to make a new car from user
 // add time to rent
 // possibly add rates and total
 
@@ -177,6 +176,7 @@ public class RentalService {
         String createModel = CLI.readString("What will be the model of the newly added car?\n");
         System.out.print("Thank you, your car has been created\n");
 
+       // Car car6 = new Car(createMake,createModel,true);
         Car car5 = new Car(createMake,createModel,false);
         garage.add(car5);
 
