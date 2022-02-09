@@ -28,11 +28,11 @@ public class RentalService {
 
             System.out.println("Welcome to Off the Walls  Rental CLI\n\r");
 
-        mainMenu(garage);
+                 mainMenu(garage);
 
     }
 
-    public static void mainMenu (ArrayList<Car> garage ) {
+            public static void mainMenu (ArrayList<Car> garage ) {
         System.out.print("MAIN MENU\n");
 
         int returnAvailable = 0;
@@ -75,42 +75,42 @@ public class RentalService {
 
     }
 
-    public static void endProgram() {
+             public static void endProgram() {
        System.out.print("Thank you for Choosing Off the Walls and have a great day!!");
 
     }
 
-    public static void rentACar(ArrayList<Car> garage) {
+             public static void rentACar(ArrayList<Car> garage) {
 
-        for (int i = 0; i < garage.size(); i++) {
-            if (garage.get(i).isRented()) {
+                for (int i = 0; i < garage.size(); i++) {
+                    if (garage.get(i).isRented()) {
 
-                System.out.print((i + 1) + ")  " + garage.get(i).getName() + "\n");
-            } else {
+                        System.out.print((i + 1) + ")  " + garage.get(i).getName() + "\n");
+                    } else {
+                        }
+
+                }
+                 int rentalOption  = CLI.readInt( "Which car would you like to rent?",1,4);
+
+                String rentersName = CLI.readString("What name would you like to rent this under?");
+                System.out.print(rentersName + " has rented the  " + garage.get((rentalOption - 1)).getName());
+                //confirm they want selection
+                boolean confirm = CLI.yesOrNo("Are you sure this is what you would like to rent today? \n");
+                if ( confirm == true){
+                    System.out.print(" Thank you " + rentersName + " you have confirmed your rental of the " + garage.get((rentalOption-1)).getName() + " we hope you enjoy your car.");
+
+                }else {
+                    System.out.print("We are sorry about that, please choose what you would like to do today. ");
+                    mainMenu(garage);
                 }
 
-        }
-         int rentalOption  = CLI.readInt( "Which car would you like to rent?",1,4);
-
-        String rentersName = CLI.readString("What name would you like to rent this under?");
-        System.out.print(rentersName + " has rented the  " + garage.get((rentalOption - 1)).getName());
-        //confirm they want selection
-        boolean confirm = CLI.yesOrNo("Are you sure this is what you would like to rent today? \n");
-        if ( confirm == true){
-            System.out.print(" Thank you " + rentersName + " you have confirmed your rental of the " + garage.get((rentalOption-1)).getName() + " we hope you enjoy your car.");
-
-        }else {
-            System.out.print("We are sorry about that, please choose what you would like to do today. ");
-            mainMenu(garage);
-        }
 
 
-
-        changeAvailability(garage,rentalOption);
-        whatsNext(garage);
+                        changeAvailability(garage,rentalOption);
+                        whatsNext(garage);
     }
 
-        public static void whatsNext(ArrayList<Car> garage) {
+             public static void whatsNext(ArrayList<Car> garage) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What would you like to do next?");
         System.out.println("1) Rent another car?");
@@ -127,7 +127,7 @@ public class RentalService {
     }
 
 
-    public static void returnACar(ArrayList<Car> garage) {
+             public static void returnACar(ArrayList<Car> garage) {
 
         for (int i = 0; i < garage.size(); i++) {
             if (!garage.get(i).isRented()) {
@@ -158,7 +158,7 @@ public class RentalService {
 
 
 
-            public static void changeAvailability (ArrayList<Car> garage,int rentalOption){
+             public static void changeAvailability (ArrayList<Car> garage,int rentalOption){
 
 
                 if (!garage.get((rentalOption - 1)).isRented()) {
@@ -170,19 +170,19 @@ public class RentalService {
 
             }
 
-            public static void createANewCar( ArrayList<Car> garage){
+             public static void createANewCar( ArrayList<Car> garage){
 
-        String createMake =  CLI.readString("what will be the make of the newly added car?");
-        String createModel = CLI.readString("What will be the model of the newly added car?\n");
-        System.out.print("Thank you, your car has been created\n");
+                    String createMake =  CLI.readString("what will be the make of the newly added car?");
+                    String createModel = CLI.readString("What will be the model of the newly added car?\n");
+                    System.out.print("Thank you, your car has been created\n");
 
-       // Car car6 = new Car(createMake,createModel,true);
-        Car car5 = new Car(createMake,createModel,false);
-        garage.add(car5);
+                   // Car car6 = new Car(createMake,createModel,true);
+                    Car car5 = new Car(createMake,createModel,false);
+                    garage.add(car5);
 
-        mainMenu(garage);
+                    mainMenu(garage);
 
-            }
+                        }
 
         }
 
