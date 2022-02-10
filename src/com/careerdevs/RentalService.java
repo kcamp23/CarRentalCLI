@@ -16,9 +16,9 @@ public class RentalService {
         public static void main(String[] args) {
 
             Car car1 = new Car("Ford", "Mustang", true);
-            Car car2 = new Car("Pontiac", "Torrent", false);
+            Car car2 = new Car("Pontiac", "Torrent", true);
             Car car3 = new Car("Dodge", "Ram", true);
-            Car car4 = new Car("Nissan", "Stanza", false);
+            Car car4 = new Car("Nissan", "Stanza", true);
 
             ArrayList<Car> garage = new ArrayList<>();
             garage.add(car1);
@@ -31,7 +31,6 @@ public class RentalService {
                  mainMenu(garage);
 
     }
-
             public static void mainMenu (ArrayList<Car> garage ) {
         System.out.print("MAIN MENU\n");
 
@@ -51,8 +50,8 @@ public class RentalService {
             if (returnAvailable > 0) {
                 System.out.print("2) Return (" + returnAvailable + " cars available) \n\r");
             }
-            System.out.print("3) Exit program\n\r   ");
-            System.out.print("4) Create a new car\n");
+            System.out.print("3) Create a new car \n");
+            System.out.print("4)Exit program\n");
 
 
         int mainMenuOption = CLI.readInt("What would you like to do today?\n",1,4);
@@ -63,9 +62,9 @@ public class RentalService {
                 //// run return menu
                 returnACar(garage);
             } else if (mainMenuOption == 3) {
-                endProgram();
-            }else if (mainMenuOption == 4){
                 createANewCar(garage);
+            }else if (mainMenuOption == 4){
+                endProgram();
             } else {
                 System.out.print("Car selection invalid, please try again\n");
                 mainMenu(garage);
@@ -125,7 +124,6 @@ public class RentalService {
             default -> mainMenu(garage);
         }
     }
-
 
              public static void returnACar(ArrayList<Car> garage) {
 
