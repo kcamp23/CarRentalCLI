@@ -6,14 +6,14 @@ import java.util.Scanner;
 // change numbering system to be in order regardless of what the options are
 // add time to rent
 // possibly add rates and total
+// refactor to get everything esthetic
 
 
 
 
+    public class RentalService {
 
-public class RentalService {
-
-        public static void main(String[] args) {
+            public static void main(String[] args) {
 
             Car car1 = new Car("Ford", "Mustang", true);
             Car car2 = new Car("Pontiac", "Torrent", true);
