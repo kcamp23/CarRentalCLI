@@ -8,7 +8,7 @@ import java.util.Scanner;
 // possibly add rates and total
 // refactor to get everything esthetic
 //reactor to make more effiecent
-
+// make two seperate arrays or another copy with two arrays
 
 
 
