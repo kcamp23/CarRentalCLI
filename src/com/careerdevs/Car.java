@@ -4,6 +4,8 @@ package com.careerdevs;
 ////model (String)
 ////isRented (boolean)
 
+
+
 public class Car {
 
     private String make;

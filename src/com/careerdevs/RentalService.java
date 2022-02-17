@@ -7,6 +7,8 @@ import java.util.Scanner;
 // add time to rent
 // possibly add rates and total
 // refactor to get everything esthetic
+//reactor to make more effiecent
+
 
 
 
